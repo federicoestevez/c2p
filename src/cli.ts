@@ -22,6 +22,10 @@ bin(
     "--type, -t <extensions...>",
     "Retrieve only files with the given extension",
   )
+  .option(
+    "--type-not, -T <extensions...>",
+    "Exclude files with the given extension",
+  )
   .option("--output, -o <path>", "Save the result to a file")
   .action(async (opts, args) => {
     const options: Options = opts satisfies Options;

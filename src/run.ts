@@ -39,12 +39,21 @@ async function processTarget(
   let files = await getFiles(glob, options);
 
   // Filter by type if specified
-  // TODO: Support disallowing certain types
-  if (options.type?.length) {
+  if (options.type?.length || options.typeNot?.length) {
     const allowed = new Set(options.type ?? []);
+    const disallowed = new Set(options.typeNot ?? []);
     files = files.filter((filePath) => {
       const ext = getPathExtension(filePath);
-      return allowed.size ? allowed.has(ext) || allowed.has("." + ext) : false;
+
+      if (allowed.size && !allowed.has(ext)) {
+        return false;
+      }
+
+      if (disallowed.size && disallowed.has(ext)) {
+        return false;
+      }
+
+      return true;
     });
   }
 

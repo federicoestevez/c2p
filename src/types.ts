@@ -3,6 +3,7 @@ export type Options = {
   hidden?: boolean;
   print?: boolean;
   type?: string[];
+  typeNot?: string[];
   output?: string;
 };
 
