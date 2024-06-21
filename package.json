@@ -1,0 +1,33 @@
+{
+  "name": "@federicoestevez/c2p",
+  "version": "0.0.1",
+  "type": "module",
+  "bin": {
+    "c2p": "./dist/c2p.js"
+  },
+  "files": ["dist"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/federicoestevez/c2p"
+  },
+  "scripts": {
+    "build": "bun run build.ts",
+    "dev": "bun run build.ts --watch",
+    "format": "biome format --write ."
+  },
+  "dependencies": {
+    "clipboardy": "^4.0.0",
+    "is-binary-path": "^3.0.0",
+    "specialist": "^1.4.0",
+    "tiny-colors": "^2.2.1",
+    "tiny-readdir-glob-gitignore": "^2.0.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.2",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "license": "MIT"
+}
