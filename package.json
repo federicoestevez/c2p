@@ -11,8 +11,8 @@
     "url": "https://github.com/federicoestevez/c2p"
   },
   "scripts": {
-    "build": "bun run build.ts",
-    "dev": "bun run build.ts --watch",
+    "build": "bun build ./src/cli.ts --target bun --outfile ./dist/c2p.js --minify",
+    "dev": "bun run build --watch",
     "format": "biome format --write ."
   },
   "dependencies": {
