@@ -12,6 +12,9 @@ bin(
 )
   .autoUpdateNotifier(false)
   .usage(`c2p ${color.yellow("<dir>")}`)
+  .usage(`c2p ${color.yellow("./src")} ${color.green("--type tsx --type ts")}`)
+  .usage(`c2p ${color.yellow("./src")} ${color.green("--type-not svg")}`)
+  .usage(`c2p ${color.yellow("./src")} ${color.green("--output output.txt")}`)
   .argument("[target]", "The files or directories to convert into prompt")
   .option(
     "--exclude",
