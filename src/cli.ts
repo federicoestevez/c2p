@@ -20,7 +20,7 @@ bin(
     "--exclude",
     "Exclude files and directories that match the given pattern",
   )
-  .option('--no-ignore', 'Do not respect .gitignore files', { default: true })
+  .option("--no-ignore", "Do not respect .gitignore files", { default: true })
   .option("--print", "Print the result to the console")
   .option(
     "--type, -t <extensions...>",
