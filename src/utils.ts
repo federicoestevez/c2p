@@ -39,6 +39,7 @@ export function getReaddir(globs: string[], options: Options): Promise<Result> {
   return readdir(globs, {
     cwd: process.cwd(),
     limit: Infinity,
+    ignoreFiles: options.ignore ? [".gitignore"] : [],
     followSymlinks: false,
     ignore: (filePath) => {
       if (options.hidden) return false;

@@ -1,10 +1,11 @@
 export type Options = {
-  tokens?: boolean;
   hidden?: boolean;
+  ignore?: boolean;
+  output?: string;
   print?: boolean;
+  tokens?: boolean;
   type?: string[];
   typeNot?: string[];
-  output?: string;
 };
 
 export type Target = {
