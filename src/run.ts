@@ -13,10 +13,10 @@ import {
   saveToFile,
 } from "./utils";
 
-export async function run(options: Options, target: string): Promise<void> {
+export async function run(options: Options, targets: string[]): Promise<void> {
   const onTarget = (target: Target) => getTargetContent(options, target);
 
-  const outputs = await processTarget(target, options, onTarget);
+  const outputs = await processTargets(targets, options, onTarget);
   const outputSeparator = options.print ? "\n" : "\n\n";
 
   if (options.print) {
@@ -31,8 +31,8 @@ export async function run(options: Options, target: string): Promise<void> {
   process.exit();
 }
 
-async function processTarget(
-  glob: string,
+async function processTargets(
+  glob: string[],
   options: Options,
   onTarget: (target: Target) => Promise<string | undefined>,
 ): Promise<string[]> {

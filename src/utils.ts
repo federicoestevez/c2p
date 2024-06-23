@@ -28,11 +28,25 @@ export function isFile(targetPath: string): boolean {
 }
 
 export async function getFiles(
-  glob: string,
+  globs: string[],
   options: Options,
 ): Promise<string[]> {
-  const { files } = await getReaddir([glob], options);
-  return files;
+  const cwd = process.cwd();
+  const [fileGlobs, dirGlobs] = globs.reduce<[string[], string[]]>(
+    ([files, dirs], glob) => {
+      isFile(path.resolve(cwd, glob)) ? files.push(glob) : dirs.push(glob);
+      return [files, dirs];
+    },
+    [[], []],
+  );
+
+  if (dirGlobs.length === 0) {
+    return fileGlobs;
+  }
+
+  const { files: dirFiles } = await getReaddir(dirGlobs, options);
+
+  return [...fileGlobs, ...dirFiles];
 }
 
 export function getReaddir(globs: string[], options: Options): Promise<Result> {

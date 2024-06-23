@@ -11,11 +11,15 @@ bin(
   "A lightning-fast CLI tool that efficiently converts code files into a format suitable for use as prompts in AI conversations or other applications.",
 )
   .autoUpdateNotifier(false)
-  .usage(`c2p ${color.yellow("<dir>")}`)
+  .usage(`c2p ${color.yellow("[targets...]")}`)
+  .usage(`c2p ${color.yellow("./src/*")} ${color.yellow("./build/*")}`)
   .usage(`c2p ${color.yellow("./src")} ${color.green("--type tsx --type ts")}`)
   .usage(`c2p ${color.yellow("./src")} ${color.green("--type-not svg")}`)
   .usage(`c2p ${color.yellow("./src")} ${color.green("--output output.txt")}`)
-  .argument("[target]", "The files or directories to convert into prompt")
+  .argument(
+    "[targets...]",
+    "The files, directories, or glob patterns to convert into prompt",
+  )
   .option(
     "--exclude",
     "Exclude files and directories that match the given pattern",
@@ -32,9 +36,8 @@ bin(
   )
   .option("--output, -o <path>", "Save the result to a file")
   .action(async (opts, args) => {
-    const options: Options = opts satisfies Options;
-    const path = args[0] ?? ".";
-
-    await run(options, path);
+    const options = { ...opts } as Options;
+    const paths = args.length > 0 ? args : ["."];
+    await run(options, paths);
   })
   .run();
