@@ -2,10 +2,11 @@
   "name": "@federicoestevez/c2p",
   "version": "0.0.1",
   "type": "module",
+  "main": "dist/c2p.js",
+  "exports": "./dist/c2p.js",
   "bin": {
-    "c2p": "./dist/c2p.js"
+    "c2p": "dist/c2p.js"
   },
-  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "https://github.com/federicoestevez/c2p"
@@ -13,7 +14,8 @@
   "scripts": {
     "build": "bun build ./src/cli.ts --target bun --outfile ./dist/c2p.js --minify",
     "dev": "bun run build --watch",
-    "format": "biome format --write ."
+    "format": "biome format --write .",
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {
     "clipboardy": "^4.0.0",
