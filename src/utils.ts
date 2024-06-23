@@ -70,6 +70,13 @@ export async function resolveTarget(target: Target): Promise<string> {
   return await fsp.readFile(target.path, "utf8");
 }
 
+export async function resolveTemplate(template: string): Promise<string> {
+  return await fsp.readFile(
+    path.resolve(process.cwd(), `templates/${template}.hbs`),
+    "utf8",
+  );
+}
+
 export function getPathExtension(filePath: string): string {
   const regex = /\.([^\\\/\.]+)$/;
   const match = filePath.match(regex);

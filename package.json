@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "clipboardy": "^4.0.0",
+    "handlebars": "^4.7.8",
     "is-binary-path": "^3.0.0",
     "specialist": "^1.4.0",
     "tiny-colors": "^2.2.1",
