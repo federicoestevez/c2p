@@ -26,6 +26,7 @@ bin(
   )
   .option("--no-ignore", "Do not respect .gitignore files", { default: true })
   .option("--print", "Print the result to the console")
+  .option("--template <template>", "Use a template to format the result")
   .option(
     "--type, -t <extensions...>",
     "Retrieve only files with the given extension",

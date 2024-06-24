@@ -3,6 +3,7 @@ export type Options = {
   ignore?: boolean;
   output?: string;
   print?: boolean;
+  template?: boolean;
   tokens?: boolean;
   type?: string[];
   typeNot?: string[];
