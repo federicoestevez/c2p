@@ -14,6 +14,7 @@
   "scripts": {
     "build": "bun build ./src/cli.ts --target node --outfile ./dist/c2p.js --minify",
     "dev": "bun run build --watch",
+    "lint": "biome lint .",
     "format": "biome format --write .",
     "prepublishOnly": "bun run build"
   },

@@ -52,7 +52,7 @@ export async function getFiles(
 export function getReaddir(globs: string[], options: Options): Promise<Result> {
   return readdir(globs, {
     cwd: process.cwd(),
-    limit: Infinity,
+    limit: Number.POSITIVE_INFINITY,
     ignoreFiles: options.ignore ? [".gitignore"] : [],
     ignoreFilesFindAbove: false,
     ignoreFilesFindBetween: false,
@@ -89,7 +89,7 @@ export function getRelativePath(fromPath: string, toPath: string) {
   return path.relative(fromPath, toPath);
 }
 
-export function createCounterPromise(initialCount: number = 0): {
+export function createCounterPromise(initialCount = 0): {
   promise: Promise<void>;
   increment: () => void;
   decrement: () => void;

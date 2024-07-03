@@ -18,13 +18,14 @@ export async function run(options: Options, targets: string[]): Promise<void> {
 
   const outputs = await processTargets(targets, options, onTarget);
   const outputSeparator = options.print ? "\n" : "\n\n";
+  const output = outputs.join(outputSeparator);
 
   if (options.print) {
-    process.stdout.write(outputs.join(outputSeparator));
+    process.stdout.write(output);
   } else if (options.output?.length) {
-    await saveToFile(options.output, outputs.join(outputSeparator));
+    await saveToFile(options.output, output);
   } else {
-    await copyToClipboard(outputs.join(outputSeparator));
+    await copyToClipboard(output);
   }
 
   process.exitCode = outputs.length ? 0 : 1;
@@ -68,7 +69,7 @@ async function processTargets(
   }));
 
   const counter = createCounterPromise();
-  targets.forEach((target) => {
+  for (const target of targets) {
     counter.increment();
     onTarget(target).then((result) => {
       if (isString(result)) {
@@ -76,7 +77,7 @@ async function processTargets(
       }
       counter.decrement();
     });
-  });
+  }
 
   await counter.promise;
 
