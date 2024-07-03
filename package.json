@@ -1,6 +1,6 @@
 {
   "name": "@federicoestevez/c2p",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "dist/c2p.js",
   "exports": "./dist/c2p.js",
