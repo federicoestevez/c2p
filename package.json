@@ -12,7 +12,7 @@
     "url": "https://github.com/federicoestevez/c2p"
   },
   "scripts": {
-    "build": "bun build ./src/cli.ts --target bun --outfile ./dist/c2p.js --minify",
+    "build": "bun build ./src/cli.ts --target node --outfile ./dist/c2p.js --minify",
     "dev": "bun run build --watch",
     "format": "biome format --write .",
     "prepublishOnly": "bun run build"
