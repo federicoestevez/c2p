@@ -1,4 +1,5 @@
 export type Options = {
+  exclude?: string[];
   hidden?: boolean;
   ignore?: boolean;
   output?: string;

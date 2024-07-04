@@ -21,8 +21,8 @@ bin(
     "The files, directories, or glob patterns to convert into prompt",
   )
   .option(
-    "--exclude",
-    "Exclude files and directories that match the given pattern",
+    "--exclude, -e <patterns...>",
+    "Exclude files and directories that match the given glob patterns",
   )
   .option("--no-ignore", "Do not respect .gitignore files", { default: true })
   .option("--print", "Print the result to the console")
