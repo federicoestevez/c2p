@@ -57,12 +57,17 @@ export function getReaddir(globs: string[], options: Options): Promise<Result> {
     ignoreFilesFindAbove: false,
     ignoreFilesFindBetween: false,
     followSymlinks: false,
-    ignore: (filePath) => {
-      if (options.hidden) return false;
-      const hiddenRegex = /[\\\/]\.[^\\\/]*$/;
-      const isHidden = hiddenRegex.test(filePath);
-      return isHidden;
-    },
+    ignore: [
+      ...(options.exclude || []),
+      (filePath) => {
+        if (options.hidden) return false;
+        const hiddenRegex = /[\\\/]\.[^\\\/]*$/;
+        const isHidden = hiddenRegex.test(filePath);
+        if (isHidden) return true;
+
+        return false;
+      },
+    ],
   });
 }
 
