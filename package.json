@@ -21,16 +21,16 @@
   "dependencies": {
     "clipboardy": "^4.0.0",
     "is-binary-path": "^3.0.0",
-    "specialist": "^1.4.0",
-    "tiny-colors": "^2.2.1",
-    "tiny-readdir-glob-gitignore": "^2.0.4"
+    "specialist": "^1.4.5",
+    "tiny-colors": "^2.2.2",
+    "tiny-readdir-glob-gitignore": "^2.0.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.2",
+    "@biomejs/biome": "^1.9.4",
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.4.4"
   },
   "license": "MIT"
 }
